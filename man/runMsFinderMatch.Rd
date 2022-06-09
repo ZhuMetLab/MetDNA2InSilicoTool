@@ -10,8 +10,15 @@ runMsFinderMatch(
   msfinder_path = "F:/software/MSFINDER/MSFINDER_ver_3.24/MsfinderConsoleApp.exe"
 )
 }
+\arguments{
+\item{peak_id}{peak name}
+
+\item{dir_path}{path of working}
+
+\item{msfinder_path}{msfinder program path}
+}
 \description{
-R interface to run MS-FINDER
+R interface to run MS-FINDER. If you use this function, please refer MS-FINDER parper.
 }
 \author{
 Zhiwei Zhou
