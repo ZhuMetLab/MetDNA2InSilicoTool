@@ -1,0 +1,25 @@
+
+# MetDNA2InSilicoTool
+
+<!-- badges: start -->
+<!-- badges: end -->
+
+The goal of MetDNA2InSilicoTool is to ...
+
+## Installation
+
+You can install the development version of MetDNA2InSilicoTool like so:
+
+``` r
+# FILL THIS IN! HOW CAN PEOPLE INSTALL YOUR DEV PACKAGE?
+```
+
+## Example
+
+This is a basic example which shows you how to solve a common problem:
+
+``` r
+library(MetDNA2InSilicoTool)
+## basic example code
+```
+
