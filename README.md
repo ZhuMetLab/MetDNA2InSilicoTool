@@ -4,7 +4,7 @@
 <!-- badges: start -->
 <!-- badges: end -->
 
-**Knowledge-guided multi-layer network (KGMN)** is a new approach leveraging knowledge-guided multi-layer networks to annotate known and unknown metabolites in untargeted metabolomics data. Although KGMN is an independent software tool, it can further integrate with other workflows to help users discover and validate metabolites. This tutorial aims to provide an easy instruction to integrated KGMN results with 3 common in-silico MS/MS tools (MetFrag, CFM-ID, MS-FINDER).<br>
+[**Knowledge-guided multi-layer network (KGMN)**](http://metdna.zhulab.cn/) is a new approach leveraging knowledge-guided multi-layer networks to annotate known and unknown metabolites in untargeted metabolomics data. Although KGMN is an independent software tool, it can further integrate with other workflows to help users discover and validate metabolites. This tutorial aims to provide an easy instruction to integrated KGMN results with 3 common in-silico MS/MS tools (MetFrag, CFM-ID, MS-FINDER).<br>
 
 The goal of MetDNA2InSilicoTool focus on providing ways to help users linking KGMN with other tools. It should be note that the parameters need to be adjusted according to their instrument settings and experimental designs. The detailed usage please refer their own tutorials. <br>
 
@@ -94,6 +94,11 @@ runMsFinderMatch(peak_id = 'M196T420',
                  msfinder_path = 'F:/software/MSFINDER/MSFINDER_ver_3.24/MsfinderConsoleApp.exe')
 
 ```
+
+## Citation
+This free open-source software implements academic research by the authors and co-workers. If you use it, please support the project by citing the appropriate journal articles. For other in-silico tools, please cite their origin papers.
+
+Zhiwei Zhou†, Mingdu Luo†, Haosong Zhang, Yandong Yin, Yuping Cai, and Zheng-Jiang Zhu*, Metabolite annotation from knowns to unknowns through knowledge-guided multi-layer metabolic network, **Submitted**, 2022. [**bioRxiv**](https://doi.org/10.1101/2022.06.02.494523)
 
 ## License
 <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png" /></a> 
