@@ -7,7 +7,8 @@
 runMsFinderMatch(
   peak_id,
   dir_path = ".",
-  msfinder_path = "F:/software/MSFINDER/MSFINDER_ver_3.24/MsfinderConsoleApp.exe"
+  msfinder_path = "F:/software/MSFINDER/MSFINDER_ver_3.24/MsfinderConsoleApp.exe",
+  is_execute = TRUE
 )
 }
 \arguments{

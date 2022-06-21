@@ -36,8 +36,11 @@ copyFiles4InsilicoTool <- function(dir_path = '.'){
 
 # dir_path <- 'd:/project/00_zhulab/01_metdna2/00_data/20220608_insilico_ms2_tutorial/MetDNA2_pos/07_insilico_msms/'
 # dir_path <- 'G:/00_projects/03_MetDNA2/10_project/MetDNA2_project/Data/20220608_biological_samples/NIST_urine_pos/07_insilico_msms/'
+# dir_path <- 'G:/00_projects/03_MetDNA2/10_project/MetDNA2_project/Data/20220613_S9_fraction_ms2/pos/07_insilico_msms/'
 # reformatTable1(dir_path = dir_path)
+
 reformatTable1 <- function(dir_path = '.'){
+  # browser()
   load(file.path(dir_path, 'table_identification'))
   load(file.path(dir_path, 'ms2_data.RData'))
   table_identification <- table_identification %>%
@@ -51,6 +54,7 @@ reformatTable1 <- function(dir_path = '.'){
   # add inchi and monoisotopic mass
   data("cpd_emrn", envir = environment())
   data("cpd_lib", envir = environment())
+  data("cpd_46stdExd", envir = environment())
 
   cpd_emrn <- cpd_emrn %>% tidyr::separate_rows(id_kegg_synonyms, sep = ';')
 
@@ -83,10 +87,16 @@ reformatTable1 <- function(dir_path = '.'){
   mono_mass_vector[idx_na] <- cpd_emrn$monoisotopic_mass[idx6]
   inchi_vector[idx_na] <- cpd_lib$inchi[idx6]
 
+  # add 46std extended compounds
+  idx_na <- which(is.na(mono_mass_vector))
+  idx7 <- match(table_identification$id_kegg[idx_na], cpd_46stdExd$id)
+  mono_mass_vector[idx_na] <- cpd_46stdExd$monoisotopic_mass[idx7]
+  inchi_vector[idx_na] <- cpd_46stdExd$inchi[idx7]
+
   table_identification <- table_identification %>%
     dplyr::mutate(monoisopic_mass = mono_mass_vector, inchi = inchi_vector)
 
-  rm(list = c('cpd_emrn', 'cpd_lib'));gc()
+  rm(list = c('cpd_emrn', 'cpd_lib', 'cpd_46stdExd'));gc()
 
   save(table_identification, file = file.path(dir_path, 'table_identification'))
 }
@@ -348,7 +358,8 @@ runCfmIdMatch <- function(peak_id,
 
 runMsFinderMatch <- function(peak_id,
                              dir_path = '.',
-                             msfinder_path = 'F:/software/MSFINDER/MSFINDER_ver_3.24/MsfinderConsoleApp.exe') {
+                             msfinder_path = 'F:/software/MSFINDER/MSFINDER_ver_3.24/MsfinderConsoleApp.exe',
+                             is_execute = TRUE) {
   if (!(peak_id %in% list.files(dir_path))) {
     stop('Please call generateFiles4InsilicoMsMs for peak', peak_id)
   }
@@ -397,8 +408,11 @@ runMsFinderMatch <- function(peak_id,
 
   }
 
-  cat('\n');cat('Exclute bat file of MSFINDER\n')
-  shell.exec(file = file.path(root_path, paste0(peak_id, '_script.bat')))
+  if (is_execute) {
+    cat('\n');cat('Exclute bat file of MSFINDER\n')
+    shell.exec(file = file.path(root_path, paste0(peak_id, '_script.bat')))
+  }
+
   cat('Done!\n')
 }
 
@@ -416,5 +430,9 @@ Version 0.1.0 (20220609)
 -------------
 o initial commit. An R package to connect KGMN result with other in-silico MS/MS tools.
 
+Version 0.1.1 (20220614)
+-------------
+o add 46STD_exd compounds
+o add is_execute parameter in the `runMsFinderMatch` function
 ")
 }

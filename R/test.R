@@ -13,3 +13,8 @@
 #
 # load('D:/01_r_package/MetDNA2_V1.1/MetDNA2_V1.1/data/lib_adduct_nl.rda')
 # usethis::use_data(lib_adduct_nl, overwrite = TRUE)
+
+################################################################################
+#
+# load('D:/01_r_package/MetDNA2_V1.1/MetDNA2_V1.1/data/cpd_46stdExd.rda')
+# usethis::use_data(cpd_46stdExd, overwrite = TRUE)
